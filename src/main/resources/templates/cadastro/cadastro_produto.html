@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head_pagina">
+	<meta charset="utf-8" />
+</head>
+<style>
+	#div1 {
+		display: inline-block;
+		float: left;
+		margin-left: -20px;
+		margin-top: -24px;
+	}
+
+	#div2 {
+		
+		padding: 20px;
+		margin-top: -10px;
+		float: left;
+		margin-left: 620px;
+	}
+	
+	#botao{
+		float: left;
+		padding: 10px;
+	}
+	
+	#formulario{
+		float: left;
+	}
+</style>
+
+<body>
+
+	<div id="div"  align="center">
+		<div th:replace="fragments :: coluna_superior"></div>
+	</div>
+	<div class="container" id="div1">
+		<div th:replace="fragments :: menu"></div>
+	</div>
+	<div class="container jumbotron" align="left" id="div2">
+		<form id="formulario"  th:object="${produtos}" method="post" th:action="@{/cadastro/produto/salvar}">
+			<h1 style=" float: left;">Cadastrar Produto</h1>
+			<div class="col-md-12 mb-3 ">
+				<label for="exampleFormControlInput1">Nome do Produto</label> <input name="nome" th:field="*{nome}"
+					type="text" class="form-control" id="exampleFormControlInput1" placeholder="nome do produto"
+					required>
+			</div>
+			<div class="col-md-12  mb-3 ">
+				<label for="exampleFormControlSelect1">Categoria</label> <select th:field="*{categoria}"
+					name="categoria" class="form-control" id="exampleFormControlSelect1">
+					<option th:each="p : ${listaCategoria}" th:value="${p}" th:text="${p}" required></option>
+				</select>
+			</div>
+
+			<div class="col-md-12 mb-3 ">
+				<label for="sel1">Quantidade do Produto </label>
+				<input th:field="*{quantidade}" type="number" name="quantidade" min="1" max="99" value="0" required>
+
+			</div>
+			<div class="col-md-12 mb-3">
+				<label for="exampleFormControlSelect1">Selecione um Estoque</label> <select th:field="*{estoque}"
+					name="estoque" class="form-control" id="exampleFormControlSelect1" required>
+					<option th:each="p : ${listaEstoque}" th:value="${p.id}" th:text="${p.nome}" required></option>
+				</select>
+			</div>
+			<div id="botao">
+				<input type="hidden" id="id" th:field="*{id}" value="" />
+					<button  class="btn btn-success" type="submit">Salvar</button>
+				<a type="button" class="btn btn-info" th:href="@{/cadastro/produto/listar}">Voltar</a>
+			</div>
+		</form>
+
+		<div class="fixed-bottom">
+			<div th:replace="fragments :: footer"></div>
+		</div>
+	</div>
+</body>
+</html>

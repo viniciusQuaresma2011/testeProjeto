@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head_pagina">
+
+</head>
+<style>
+	#div1{
+		
+		float: left;
+		margin-left: -20px;
+		margin-top: -24px;
+	}
+
+	#div2{
+	
+		float: center ;
+		padding:20px;
+			margin-left: 620px;
+			margin-top: -10px;
+	}
+</style>
+<body>
+	<div >
+		<div th:replace="fragments :: coluna_superior"></div>
+	</div>
+
+	<div class="container"  id="div1">
+		<div th:replace="fragments :: menu"></div>
+	</div>
+	
+	<div align="center" class="container jumbotron"  id="div2" >
+		<h1>Estoque Cadastrado Com Sucesso!!</h1>
+		<span>Nome:  </span><span th:text="${estoques.nome}"></span><br />
+		<span>Tipo: </span><span th:text="${estoques.tipo}"></span><br />
+		<span>Quantidade:  </span><span th:text="${estoques.quantidade}"></span><br/>
+		
+		
+		
+		<a type="button" class="btn btn-primary"  th:href="@{/cadastro/estoque/listar}">Clique para retornar a Lista de Estoques</a>
+	</div>
+	
+	
+	
+	<div class="fixed-bottom">
+		<div th:replace="fragments :: footer"></div>
+	</div>
+</body>
+</html>
