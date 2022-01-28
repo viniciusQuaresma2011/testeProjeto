@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head_pagina">
+
+</head>
+<style>
+	#div1{
+		display: inline-block;
+		float: left;
+		margin-left: -20px;
+		margin-top: -24px;
+	}
+
+	#div2{
+	
+		float: center ;
+		padding-left: 130px;
+	}
+</style>
+<body>
+	<div >
+		<div th:replace="fragments :: coluna_superior"></div>
+	</div>
+
+	<div class="container" id="div1">
+		<div th:replace="fragments :: menu"></div>
+	</div>
+	
+	<div align="center" class="container"  id="div2">
+		<h1>Dispositivo Deletado com Sucesso!!!!</h1>
+	<span th:text="${mensagemDispositivoRemocao}"></span><br />
+		
+		
+		
+		<a type="button"   class="btn btn-primary" th:href="@{/cadastro/dispositivos/listar}">Clique para retornar a lista de Dispositivos</a>
+	</div>
+	
+	
+	
+	<div class="fixed-bottom">
+		<div th:replace="fragments :: footer"></div>
+	</div>
+</body>
+</html>

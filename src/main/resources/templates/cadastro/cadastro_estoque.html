@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head_pagina">
+	<meta charset="utf-8" />
+</head>
+<style>
+	#div1 {
+		
+		float: left;
+		margin-left: -20px;
+		margin-top: -24px;
+	}
+
+	#div2 {
+		margin-top: -10px;
+		
+		padding: 20px;
+		margin-left: 620px;
+	}
+	
+
+</style>
+
+<body>
+	<div id="div"  align="center">
+		<div th:replace="fragments :: coluna_superior"></div>
+	</div>
+	<div class="container" id="div1">
+		<div th:replace="fragments :: menu"></div>
+	</div>
+	<div class="container jumbotron" align="left" id="div2">
+		<h1 >Cadastrar Estoque</h1>
+		<form  id="formulario" align="center" th:object="${estoques}" method="post" th:action="@{/cadastro/estoque/salvar}">
+			<div class="col-md-6 mb-3">
+			<div class="row">
+				<label for="exampleFormControlInput1">Nome do Estoque</label> <input name="nome" th:field="*{nome}"
+					type="text" class="form-control" id="exampleFormControlInput1" placeholder="nome do estoque"
+					required>
+			
+			
+				<label for="exampleFormControlSelect1">Tipo</label> <select th:field="*{tipo}" name="categoria"
+					class="form-control" id="exampleFormControlSelect1" required>
+					<option th:each="p : ${tipoEstoque}" th:value="${p}" th:text="${p}"></option>
+				</select>
+			
+
+			<div class="form-group"  style="margin-left: 20px; margin-top: 20px;">
+				<label for="sel1">Quantidade Para O Estoque </label> <input th:field="*{quantidade}" type="number"
+					name="quantidade" min="1" max="1000" value="0" required>
+			</div>
+			
+			<div align="left" style="margin-left: 20px; margin-top: 20px;" class="col-md-12 mb-7">
+				<input type="hidden" id="id" th:field="*{id}" value="" />
+				<button class="btn btn-success" type="submit">Salvar</button>
+				<a type="button" class="btn btn-info" th:href="@{/cadastro/estoque/listar}">Voltar</a>
+			</div>
+			</div>
+		</form>
+	
+
+		<div class="fixed-bottom">
+			<div th:replace="fragments :: footer"></div>
+		</div>
+	</div>
+</body>
+</html>

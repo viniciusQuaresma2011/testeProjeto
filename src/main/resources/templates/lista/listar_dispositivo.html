@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head_pagina">
+	
+
+</head>
+
+<style>
+	#div1{
+		display: inline-block;
+		float: left;
+		margin-left: -20px;
+		margin-top: -24px;
+	}
+
+	#div2{
+		
+		float: center ;
+		
+		
+	}
+
+
+	.background-botao{
+			background-color:dodgerblue ;
+			border-radius: 2px;
+			border-color: black;
+		}
+	.cor-text{
+		color: white;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: large;
+		font-weight: 100;
+		font-style: italic;
+	}
+	
+	@media(max-width: 1520px){
+		#div2{
+			margin-right: 40px;
+			margin-top: 30px;
+		}
+		#div_botao_cadastrar{
+			margin-right: 40px;
+			margin-top: 30px;
+		}
+		#div_lista{
+			margin-right: 40px;
+			margin-top: 30px;
+		}
+	
+	}
+	
+	@media(max-width: 1394px){
+		#div2{
+			margin-right: -10px;
+			margin-top: 30px;
+		}
+		#div_botao_cadastrar{
+			margin-right: -10px;
+			margin-top: 30px;
+		}
+		#div_lista{
+			margin-right: -10px;
+			margin-top: 30px;
+		}
+	
+	}
+</style>
+
+<body>
+
+	<div >
+		<div th:replace="fragments :: coluna_superior"></div>
+	</div>
+
+	<div class="container" id="div1">
+		<div th:replace="fragments :: menu"></div>
+	</div>
+
+
+	<div class="container  fixed" id="div2">
+		<nav class="navbar navbar-expand-md ">
+			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><i class="oi oi-caret-right"></i>
+						<span>Lista de Dispositivos</span></li>
+				</ul>
+				<!-- <a class="btn btn-primary btn-md" href="/cadastro/dispositivos"
+					role="button"> <span class="oi oi-plus" title="Dispositivo"
+					aria-hidden="true"></span> <span>Cadastrar Dispositivo</span>
+				</a> -->
+			</div>
+
+			
+			<form class="form-inline w-15 p-2" method="POST" action="buscarPorNomeDispositivo">
+				<input class="form-control mr-sm-2" type="search" placeholder="nome"   name="nome" />
+				<button class="btn btn-outline-success my-2 my-sm-0">Pesquisar</button>
+			</form>
+		</nav>
+
+
+</div>
+
+
+
+
+		<div align=" right" class="container"  id="div_botao_cadastrar">
+		<a class="btn btn-info" href="/dispositivos/exportarCsv" role="button"> <span class="oi oi-plus"
+				title="relatorio" aria-hidden="true"></span> <span class="cor-text">Gerar Relatorio</span>
+		</a>
+		<a class="btn btn-success" href="/cadastro/dispositivos" role="button"> <span class="oi oi-plus"
+				title="Dispositivo" aria-hidden="true"></span> <span>Cadastrar Dispositivo</span>
+		</a>
+	
+
+
+		<div class="container fixed p-3"  id="div_lista">
+		<div class="table-responsive">
+			<table class="table table-striped  table-bordered" style="text-align: center;">
+				<thead >
+					<tr>
+						<th>Nome</th>
+						<th>IMEI</th>
+						<th>Modelo</th>
+						<th>Usuario Responsavel</th>
+						<th style="width: 20%;">A&ccedil;&otilde;es</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="dispositivo : ${listaDispositivos}">
+						<td th:text="${dispositivo.nome}"></td>
+						<td th:text="${dispositivo.imei}"></td>
+						<td th:text="${dispositivo.modelo}"></td>
+						<td th:text="${dispositivo.usuario.nome}"></td>
+
+						<td colspan="2" ><a class="btn btn-info fas fa-edit "
+								th:href="@{/cadastro/dispositivos/editar/{id}(id=${dispositivo.id})}"
+								role="button"><span class="oi oi-brush" aria-hidden="true"></span></a>
+
+
+
+							<a class="btn btn-danger fas fa-trash-alt" data-toggle="modal" data-target="#modal-warning"
+								th:href="@{/cadastro/dispositivos/remover/{id}(id=${dispositivo.id})}"
+								th:attr="data-target='#modal-warning'+${dispositivo.id}"><span
+									class="oi oi-circle-x" aria-hidden="true"></span></a>
+
+
+
+
+						</td>
+
+
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+
+		<div class="fixed-bottom">
+			<div th:replace="fragments :: footer"></div>
+		</div>
+	</div>
+
+</body>
+
+</html>

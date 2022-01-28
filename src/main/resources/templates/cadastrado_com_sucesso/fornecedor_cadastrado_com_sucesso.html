@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head_pagina">
+
+</head>
+<style>
+	#div1{
+		
+		float: left;
+		margin-left: -20px;
+		margin-top: -24px;
+	}
+	#div2{
+		
+		float: center ;
+		padding:20px;
+		margin-left: 620px;
+		margin-top: -10px;
+	}
+</style>
+<body>
+	<div >
+		<div th:replace="fragments :: coluna_superior"></div>
+	</div>
+
+	<div class="container" id="div1">
+		<div th:replace="fragments :: menu"></div>
+	</div>
+
+
+	<div align="center" class="container jumbotron" id="div2">
+		<h1>Fornecedor Cadastrado Com Sucesso!!</h1>
+		<span>CNPJ:  </span><span th:text="${fornecedores.cnpj}"></span><br />
+		<span>Telefone: </span><span th:text="${fornecedores.telefone}"></span><br />
+		<span>Email:  </span><span th:text="${fornecedores.email}"></span><br/>
+		<span>Endereco (*rua):  </span><span th:text="${fornecedores.endereco}"></span><br/>
+		
+		<a  type="button" class="btn btn-primary" href="/cadastro/fornecedor/listar">Voltar Para a Lista de Fornecedores</a>
+	</div>
+	
+
+
+
+	
+	<div class="fixed-bottom">
+		<div th:replace="fragments :: footer"></div>
+	</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head_pagina">
+
+</head>
+<style>
+	#div1{
+		
+		float: left;
+		margin-left: -20px;
+		margin-top: -24px;
+	}
+	#div2{
+		
+		float: center ;
+		padding:20px;
+		margin-left: 620px;
+		margin-top: -10px;
+	}
+</style>
+<body>
+	<div >
+		<div th:replace="fragments :: coluna_superior"></div>
+	</div>
+
+	<div class="container" id="div1">
+		<div th:replace="fragments :: menu"></div>
+	</div>
+
+
+	<div align="center" class="container jumbotron" id="div2">
+		<h1>Usu&aacute;rio Editado Com Sucesso!!</h1>
+		<span>Nome:  </span><span th:text="${usuario.nome}"></span><br />
+		<span>Email: </span><span th:text="${usuario.email}"></span><br />
+		<span>Nome do Usuario:  </span><span th:text="${usuario.nomeUsuario}"></span><br/>
+		<span>Filial:  </span><span th:text="${usuario.filial}"></span><br />
+		<span>Setor:  </span><span th:text="${usuario.setor}"></span><br />
+		<span>Funcao:  </span><span th:text="${usuario.funcao}"></span><br />
+		
+		<a  type="button" class="btn btn-success" href="/cadastro/usuarios/listar">Voltar Para a Lista de Usuarios</a>
+	</div>
+	
+
+
+
+	
+	<div class="fixed-bottom">
+		<div th:replace="fragments :: footer"></div>
+	</div>
+
+
+
+</body>
+</html>

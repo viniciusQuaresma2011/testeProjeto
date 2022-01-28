@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head_pagina">
+
+</head>
+<style>
+	#div1{
+		display: inline-block;
+		float: left;
+		margin-left: -20px;
+		margin-top: -24px;
+	}
+
+	#div2{
+	
+		float: center ;
+		padding-left: 130px;
+	}
+</style>
+<body>
+	<div >
+		<div th:replace="fragments :: coluna_superior"></div>
+	</div>
+
+	<div class="container"  id="div1">
+		<div th:replace="fragments :: menu"></div>
+	</div>
+	
+	<div align="center" class="container jumbotron"  id="div2">
+		<h1>Dispositivo Cadastrado Com Sucesso!!</h1>
+		<span>Nome:  </span><span th:text="${dispositivos.nome}"></span><br />
+		<span>IMEI: </span><span th:text="${dispositivos.imei}"></span><br />
+		<span>Modelo:  </span><span th:text="${dispositivos.modelo}"></span><br/>
+		<span>Usuario Responsavel:  </span><span th:text="${dispositivos.usuario.nome}"></span><br/>
+		
+		
+		
+		<a type="button" class="btn btn-primary"  th:href="@{/cadastro/dispositivos/listar}">Clique para retornar a Lista de Dispositivos</a>
+	</div>
+	
+	
+	
+	<div class="fixed-bottom">
+		<div th:replace="fragments :: footer"></div>
+	</div>
+</body>
+</html>

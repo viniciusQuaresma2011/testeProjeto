@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head_pagina">
+
+</head>
+<style>
+	#div1{
+		
+		float: left;
+		margin-left: -20px;
+		margin-top: -24px;
+	}
+	#div2{
+		
+		float: center ;
+		padding:20px;
+		margin-left: 620px;
+		margin-top: -10px;
+	}
+</style>
+<body>
+	<div >
+		<div th:replace="fragments :: coluna_superior"></div>
+	</div>
+
+	<div class="container" id="div1">
+		<div th:replace="fragments :: menu"></div>
+	</div>
+
+
+	<div align="center" class="container jumbotron" id="div2">
+		<h1>Caixa Cadastrado Com Sucesso!!</h1>
+		<span>Saldo positivo:  </span><span th:text="${caixas.saldo_positivo}"></span><br />
+		<span>Saldo negativo: </span><span th:text="${caixas.saldo_negativo}"></span><br />
+		<span>Saldo total:  </span><span th:text="${caixas.saldo_total}"></span><br/>
+		
+		<a  type="button" class="btn btn-primary" href="/cadastro/caixa/listar">Voltar Para a Lista de Caixa</a>
+	</div>
+	
+
+
+
+	
+	<div class="fixed-bottom">
+		<div th:replace="fragments :: footer"></div>
+	</div>
+
+
+
+</body>
+</html>

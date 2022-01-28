@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head_pagina">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link href="/style.css" rel="stylesheet" />
+</head>
+<style>
+	#div1 {
+		display: inline-block;
+		float: left;
+		margin-left: -20px;
+		margin-top: -24px;
+	}
+	#container_Principal{
+		margin-right: 620px;
+		padding-left: 130px;
+		
+	}
+	#container_Filhos{
+		margin: 20px;
+	}
+	
+	#div2_index{
+		margin-right: 620px;
+		padding-left: 130px;
+	}
+	
+	
+</style>
+<body>
+
+	<div>
+		<div th:replace="fragments :: coluna_superior"></div>
+	</div>
+
+	<div class="container" id="div1">
+		<div th:replace="fragments :: menu"></div>
+	</div>
+
+
+
+	<div>
+		<script
+			src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script>
+			$('document')
+					.ready(
+							function() {
+								$
+										.ajax({
+											type : "GET",
+											url : "http://localhost:8080/objetosCadastradosQuantidade",
+											dataType : "json",
+											success : function(data) {
+												var listaUsuario = [];
+												var listaProduto = [];
+												var listaEstoque = [];
+												var listaDispositivo = [];
+
+												listaUsuario.push(data[0]);
+												listaProduto.push(data[1]);
+												listaEstoque.push(data[2]);
+												listaDispositivo.push(data[3]);
+
+												console.log(data);
+
+												criarTabela(listaUsuario);
+												criarTabelaProduto(listaProduto);
+												criarTabelaEstoque(listaEstoque);
+												criarTabelaDispositivo(listaDispositivo);
+
+											}
+										});
+
+								function criarTabela(quantidadeUsuarios) {
+									var tabelas = document
+											.getElementById("tabelaResultado");
+									var row = tabelas.insertRow(1);
+									row.innerHTML = "<td>" + "Quantidade: "
+											+ quantidadeUsuarios + "</td> ";
+
+								}
+
+								function criarTabelaProduto(quantidadeProduto) {
+									var tabelas = document
+											.getElementById("tabelaResultadoProduto");
+									var row = tabelas.insertRow(1);
+									row.innerHTML = "<td>" + "Quantidade: "
+											+ quantidadeProduto + "</td> ";
+
+								}
+
+								function criarTabelaEstoque(quantidadeEstoque) {
+									var tabelas = document
+											.getElementById("tabelaResultadoEstoque");
+									var row = tabelas.insertRow(1);
+									row.innerHTML = "<td>" + "Quantidade: "
+											+ quantidadeEstoque + "</td> ";
+
+								}
+
+								function criarTabelaDispositivo(
+										quantidadeDispositivo) {
+									var tabelas = document
+											.getElementById("tabelaResultadoDispositivo");
+									var row = tabelas.insertRow(1);
+									row.innerHTML = "<td>" + "Quantidade: "
+											+ quantidadeDispositivo + "</td> ";
+
+								}
+
+							});
+		</script>
+	</div>
+
+	<!--  <div class="row"  id="div_Cards"  >  -->
+	<!-- <!-- 	<section class="container"> -->
+	<!-- 		<div class="card "  > -->
+	<!-- 			<p>Usuarios Cadastrados</p> -->
+	<!-- 			<img id="imagemUsuario" src="./imagens/iconeUsuario.png"> -->
+	<!-- 			<table id="tabelaResultado"> -->
+	<!-- 				<tr> -->
+	<!-- 					<td id="resultado"></td> -->
+	<!-- 				</tr> -->
+	<!-- 			</table> -->
+
+
+	<!-- 		</div> -->
+
+	<!-- 		<div   id="card"> -->
+	<!-- 			<p>Produtos Cadastrados</p> -->
+	<!-- 			<img id="imagemProduto" src="./imagens/iconeProduto.jpg"> -->
+	<!-- 			<table id="tabelaResultadoProduto"> -->
+	<!-- 				<tr> -->
+	<!-- 					<td id="resultado"></td> -->
+	<!-- 				</tr> -->
+	<!-- 			</table> -->
+	<!-- 		</div> -->
+
+	<!-- 		<div  id="card"> -->
+	<!-- 			<p>Estoques Cadastrados</p> -->
+	<!-- 			<img id="imagemProduto" src="./imagens/iconeEstoque.png"> -->
+	<!-- 			<table id="tabelaResultadoEstoque"> -->
+	<!-- 				<tr> -->
+	<!-- 					<td id="resultado"></td> -->
+	<!-- 				</tr> -->
+	<!-- 			</table> -->
+	<!-- 		</div> -->
+
+	<!-- 		<div   id="card"> -->
+	<!-- 			<p>Dispositivos Cadastrados</p> -->
+	<!-- 			<img id="imagemProduto" src="./imagens/iconeDispositivo.jpg"> -->
+	<!-- 			<table id="tabelaResultadoDispositivo"> -->
+	<!-- 				<tr> -->
+	<!-- 					<td id="resultado"></td> -->
+	<!-- 				</tr> -->
+	<!-- 			</table> -->
+	<!-- 		</div> -->
+
+	<!-- <!-- 	</section>	 -->
+	<!-- 		</div> -->
+
+
+
+
+	<section class="container" id="container_Principal">
+		<div class="content" id="container_Filhos">
+			<img id="imagem_card" src="./imagens/iconeUsuario.png">
+			<p>Usu&aacute;rios Cadastrados</p>
+			<table id="tabelaResultado">
+				<tr>
+					<td id="resultado"></td>
+				</tr>
+			</table>
+		</div>
+		<div class="content" id="container_Filhos">
+			<img id="imagem_card" src="./imagens/iconeProduto.jpg">
+			<p>Produtos Cadastrados</p>
+			<table id="tabelaResultadoProduto">
+				<tr>
+					<td id="resultado"></td>
+				</tr>
+			</table>
+		</div>
+		<div class="content" id="container_Filhos">
+			<img id="imagem_card" src="./imagens/iconeEstoque.png">
+			<p>Estoques Cadastrados</p>
+			<table id="tabelaResultadoEstoque">
+				<tr>
+					<td id="resultado"></td>
+				</tr>
+			</table>
+		</div>
+		<div class="content" id="container_Filhos">
+			<img id="imagem_card" src="./imagens/iconeDispositivo.jpg">
+			<p>Dispositivos Cadastrados</p>
+			<table id="tabelaResultadoDispositivo">
+				<tr>
+					<td id="resultado"></td>
+				</tr>
+			</table>
+		</div>
+
+
+	</section>
+
+	<div class="container " id="div2_index">
+		<canvas id="myChart"></canvas>
+	</div>
+	<div>
+		<script
+			src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+		<script>
+			$('document')
+					.ready(
+							function() {
+								$
+										.ajax({
+											type : "GET",
+											url : "http://localhost:8080/estoque/status",
+											dataType : "json",
+											success : function(data) {
+												var nomeEstoque = [];
+												var quantidadeEstoque = [];
+												var quantidadeProduto = [];
+
+												for (var i = 0; i < data[0].length; i++) {
+													nomeEstoque
+															.push(data[0][i].nome);
+													quantidadeEstoque
+													.push(parseInt(data[0][i].quantidade));
+												}
+												
+												for (var i = 0; i < data[1].length; i++) {
+													//nomeEstoque.push(data[1][i].nome);
+													quantidadeEstoque
+															.push(parseInt(data[1][i].quantidade));
+												}
+// 												for (var i = 0; i < data[2].length; i++) {
+// 													quantidadeProduto.push(data[2][i].produto.quantidade);
+// 												}
+
+												console.table(data);
+												grafico(nomeEstoque,
+														quantidadeEstoque);
+											}
+										});
+
+								function grafico(labels, nEstoque, estoqueQuantidade) {
+
+									var ctx = document
+											.getElementById("myChart");
+									var chartGraph = new Chart(
+											ctx,
+											{
+												type : 'bar',
+												data : {
+													labels : labels,
+													datasets : [ {
+														label : "Quantidade",
+														
+														data : nEstoque,
+														borderWidth : 6,
+														borderColor : 'rgba(77, 166, 253 , 0.85)',
+													} ]
+													
+												}
+											});
+
+								}
+							});
+		</script>
+	</div>
+
+	<div class="fixed-bottom">
+		<div th:replace="fragments :: footer"></div>
+	</div>
+
+
+
+</body>
+
+</html>

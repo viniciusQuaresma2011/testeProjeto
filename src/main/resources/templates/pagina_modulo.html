@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head_pagina">
+
+</head>
+<style>
+#menuCadastroPaciente {
+	float: left;
+	margin-top: 14px;
+	margin-left: -26px;
+}
+
+#header_paciente {
+	margin-left: 0;
+	padding-right: 50px;
+}
+
+#modulo {
+	margin-top: -20px;
+	padding: 30px;
+}
+
+#botao {
+	font-family: serif;
+	font-size: 200;
+	margin: 30px;
+	width: 25%;
+	background-color:  #20c997;
+	font-style: inherit;
+	font-size: 25px;
+}
+
+#botao span {
+	color:  black;
+}
+
+#botao:houver a{
+	background: blue;
+}
+
+.div, a {
+	padding: 20px;
+}
+
+#div1 {
+	display: inline-block;
+	float: left;
+	margin-left: -20px;
+	margin-top: -24px;
+}
+
+#div2 {
+	margin-right: 620px;
+	padding-left: 130px;
+}
+</style>
+<body>
+	<div>
+		<div th:replace="fragments :: coluna_superior"></div>
+	</div>
+
+	<div class="container" id="div1">
+		<div th:replace="fragments :: menu"></div>
+	</div>
+
+
+	<div class="container   jumbotron " id="modulo">
+			<div class="form-group">
+				<a  id="botao" class="btn btn-success" th:href="@{/cadastro/caixa/listar}"
+					role="button"> <span class="oi oi-plus" title="Caixa"
+					aria-hidden="true"></span> <span>Caixa</span>
+				</a>
+			
+
+		
+				<a id="botao" class="btn btn-success" th:href="@{/cadastro/conta_pagar/listar}"
+					role="button"> <span class="oi oi-plus" title="Cadastro"
+					aria-hidden="true"></span> <span>Contas a Pagar</span>
+				</a>
+			
+			
+			
+				<a  id="botao" class="btn btn-success "
+					th:href="@{/cadastro/conta_receber/listar}" role="button"> <span
+					class="oi oi-plus" title="Cadastro" aria-hidden="true"></span> <span>Contas
+						a Receber</span>
+				</a>
+	
+
+			
+				<a id="botao"  class="btn btn-success " th:href="@{/cadastro/financeiro/listar}"
+					role="button"> <span class="oi oi-plus" title="Cadastro"
+					aria-hidden="true"></span> <span>Financeiro</span>
+				</a>
+		
+		
+			
+		
+				<a id="botao" class="btn btn-success " th:href="@{/cadastro/fornecedor/listar}"
+					role="button"> <span class="oi oi-plus" title="Cadastro"
+					aria-hidden="true"></span> <span>Fornecedores</span>
+				</a>
+		
+
+		
+				<a id="botao" class="btn btn-success " th:href="@{/cadastro/venda/listar}"
+					role="button"> <span class="oi oi-plus" title="Cadastro"
+					aria-hidden="true"></span> <span>Vendas</span>
+				</a>
+			</div>
+		</div>
+	
+	
+
+
+	<div class="fixed-bottom">
+		<div th:replace="fragments :: footer"></div>
+	</div>
+
+</body>
+</html>
